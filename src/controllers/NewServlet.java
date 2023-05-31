@@ -1,10 +1,7 @@
 //新規登録処理(SQLでいうと、INSERT文)を行うコントローラ
 package controllers;
 
-import java.sql.Timestamp;
-import javax.persistence.EntityManager;
 import models.Tasks;
-import utils.DBUtil;
 
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -43,31 +40,5 @@ public class NewServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/new.jsp");
         rd.forward(request, response);
 
-        /*CreateServletを作る前のdoGetの内容
-        EntityManager em = DBUtil.createEntityManager();
-        em.getTransaction().begin();
-        
-        //Tasksのインスタンスを作成
-        Tasks m = new Tasks();
-        
-        //mの各フィールドにデータを代入
-        //タスク内容
-        String content = "test";
-        m.setContent(content);
-        
-        //作成日時及び更新日時
-        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-        m.setCreated_at(currentTime);
-        m.setUpdated_at(currentTime);
-        
-        //データベースに保存
-        em.persist(m);
-        em.getTransaction().commit();
-        
-        //自動採番されたID値を表示
-        response.getWriter().append(Integer.valueOf(m.getId()).toString());
-        
-        em.clear();
-        */
     }
 }
