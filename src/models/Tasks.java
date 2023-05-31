@@ -17,7 +17,7 @@ import javax.persistence.NamedQuery;
 @Entity
 
 @NamedQueries({
-        //queryの内容に getAllMessages という名前を付ける
+        //queryの内容に getAllTasks という名前を付ける
         //SELECT m = SELECT * であり、JPQLは通常のSQLと記述が異なる
         @NamedQuery(name = "getAllTasks", query = "SELECT m FROM Tasks AS m ORDER BY m.id DESC")
 })
