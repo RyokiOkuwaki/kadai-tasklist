@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import models.Tasks;
 import utils.DBUtil;
 
+import javax.servlet.RequestDispatcher;
+
 /**
  * Servlet implementation class IndexServlet
  */
@@ -37,6 +39,11 @@ public class IndexServlet extends HttpServlet {
         response.getWriter().append(Integer.valueOf(tasks.size()).toString());
 
         em.close();
+
+        request.setAttribute("tasks", tasks);
+
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/index.jsp");
+        rd.forward(request, response);
 
     }
 

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import models.Tasks;
 import utils.DBUtil;
 
+import javax.servlet.RequestDispatcher;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,29 +34,40 @@ public class NewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // CSRF対策
+        request.setAttribute("_token", request.getSession().getId());
+
+        // おまじないとしてのインスタンスを生成
+        request.setAttribute("tasｋｓ", new Tasks());
+
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/new.jsp");
+        rd.forward(request, response);
+
+        /*CreateServletを作る前のdoGetの内容
         EntityManager em = DBUtil.createEntityManager();
         em.getTransaction().begin();
-
+        
         //Tasksのインスタンスを作成
         Tasks m = new Tasks();
-
+        
         //mの各フィールドにデータを代入
         //タスク内容
         String content = "test";
         m.setContent(content);
-
+        
         //作成日時及び更新日時
         Timestamp currentTime = new Timestamp(System.currentTimeMillis());
         m.setCreated_at(currentTime);
         m.setUpdated_at(currentTime);
-
+        
         //データベースに保存
         em.persist(m);
         em.getTransaction().commit();
-
+        
         //自動採番されたID値を表示
         response.getWriter().append(Integer.valueOf(m.getId()).toString());
-
+        
         em.clear();
+        */
     }
 }
