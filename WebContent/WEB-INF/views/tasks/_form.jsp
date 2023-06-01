@@ -9,14 +9,9 @@
 
     </div>
 </c:if>
-<label for="title">タスク内容</label><br />
-<input type="text" name="content" id="content" value="${task.content}" />
+<label for="content_task">タスク内容</label><br />
+<input type="text" name="content" id="content_task" value="${tasks.content}" />
 <br /><br />
 
-<!--  <label for="content_msg">メッセージ</label><br />
-<input type="text" name="content" id="content_msg" value="${message.content}" />
-<br /><br />
--->
-
-<input type="hidden" name="_token" value="${_token}" />
-<button type="submit">タスクの作成</button>
+<!--<input type="hidden" name="_token" value="${_token}" />
+<button type="submit">タスクの作成</button>-->
