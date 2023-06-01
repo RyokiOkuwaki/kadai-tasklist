@@ -6,10 +6,10 @@
 
         <form method="POST" action="${pageContext.request.contextPath}/create">
             <c:import url="_form.jsp" />
+            <input type="hidden" name="_token" value="${_token}" />
+            <button type="submit">タスクの作成</button>
         </form>
 
-        <input type="hidden" name="_token" value="${_token}" />
-        <button type="submit">タスクの作成</button>
 
         <p><a href="${pageContext.request.contextPath}/index">一覧に戻る</a></p>
 
